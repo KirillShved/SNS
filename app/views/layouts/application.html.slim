@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    title
+      | SNS
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => 'reload'
+    = javascript_include_tag "application", "data-turbolinks-track" => 'reload'
+    = csrf_meta_tags
+  body class="= controller.controller_name"
+    nav.navbar.navbar-inverse
+      .container-fluid
+        .navbar-header
+          a.navbar-brand href="http://localhost:3000"
+            | Social Network Site
+        ul.nav.navbar-nav
+          li.active
+            a href="http://localhost:3000"
+              | Home
+        ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            li
+              = render 'devise/menu/registration_items'
+            li
+              = render 'devise/menu/login_items'
+          -else
+            li
+              = render 'devise/menu/registration_items'
+            li
+              = render 'devise/menu/login_items'
+
+    .container-fluid
+      .row
+        .col-md-5
+        .col-md-2
+          = yield
+        .col-md-5

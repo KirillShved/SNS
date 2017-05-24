@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  username: postgres
+  password: 12345678
+
+development:
+  <<: *default
+  database: SNS_development
+
+test:
+  <<: *default
+  database: SNS_test
+
+production:
+  <<: *default
+  database: SNS_production
+  username: SNS
+  password: <%= ENV['SNS_DATABASE_PASSWORD'] %>
