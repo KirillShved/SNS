@@ -6,31 +6,42 @@ html
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => 'reload'
     = javascript_include_tag "application", "data-turbolinks-track" => 'reload'
     = csrf_meta_tags
+    link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"
   body class="= controller.controller_name"
-    nav.navbar.navbar-inverse
+    .nav.navbar
       .container-fluid
-        .navbar-header
-          a.navbar-brand href="http://localhost:3000"
-            | Social Network Site
-        ul.nav.navbar-nav
-          li.active
-            a href="http://localhost:3000"
-              | Home
-        ul.nav.navbar-nav.navbar-right
-          - if user_signed_in?
-            li
-              = render 'devise/menu/registration_items'
-            li
-              = render 'devise/menu/login_items'
-          -else
-            li
-              = render 'devise/menu/registration_items'
-            li
-              = render 'devise/menu/login_items'
-
-    .container-fluid
-      .row
-        .col-md-5
-        .col-md-2
-          = yield
-        .col-md-5
+        .row
+          .col-md-4
+          .col-md-4
+            .navbar-header
+              ul.nav.navbar-nav
+                li.active
+                  = link_to root_path do
+                    .glyphicon.glyphicon-home
+                      |    Home
+                form.navbar-form.navbar-left
+                  .input-group
+                    input.form-control placeholder="Search" type="text" /
+                    .input-group-btn
+                      button.btn.btn-default type="submit"
+                        i.glyphicon.glyphicon-search
+                - if user_signed_in?
+                  li.active
+                    = link_to edit_user_registration_path do
+                      .glyphicon.glyphicon-edit
+                        |    Edit
+                  li.active
+                    = link_to destroy_user_session_path, :method => :delete do
+                      .glyphicon.glyphicon-log-out
+                        |    Logout
+                -else
+                  li.active
+                    = link_to new_user_registration_path do
+                      .glyphicon.glyphicon-check
+                        |    Register
+                  li.active
+                    = link_to new_user_session_path do
+                      .glyphicon.glyphicon-log-in
+                        |    Login
+          .col-md-4
+    = yield
