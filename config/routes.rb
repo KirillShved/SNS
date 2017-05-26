@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'profile/index'
+
   get 'main_feed/index'
 
   devise_for :users

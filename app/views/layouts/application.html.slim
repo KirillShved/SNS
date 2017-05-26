@@ -3,6 +3,7 @@ html
   head
     title
       | SNS
+    = favicon_link_tag("ruby.png")
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => 'reload'
     = javascript_include_tag "application", "data-turbolinks-track" => 'reload'
     = csrf_meta_tags
@@ -12,6 +13,7 @@ html
       .container-fluid
         .row
           .col-md-4
+            = image_tag("logo4", size: "100x50")
           .col-md-4
             .navbar-header
               ul.nav.navbar-nav
@@ -26,14 +28,30 @@ html
                       button.btn.btn-default type="submit"
                         i.glyphicon.glyphicon-search
                 - if user_signed_in?
-                  li.active
-                    = link_to edit_user_registration_path do
-                      .glyphicon.glyphicon-edit
-                        |    Edit
-                  li.active
-                    = link_to destroy_user_session_path, :method => :delete do
-                      .glyphicon.glyphicon-log-out
-                        |    Logout
+
+                  li.dropdown
+                    a.dropdown-toggle data-toggle="dropdown"
+                      .glyphicon.glyphicon-list
+                        =" #{current_user.first_name} #{current_user.last_name}"
+                    ul.dropdown-menu
+                      li.dropdown-header
+                        |Sing as:
+                        strong
+                          = current_user.email
+                      li.divider
+                      li
+                        = link_to '/profile/index' do
+                          .glyphicon.glyphicon-user
+                            |    Profile
+                      li
+                        = link_to edit_user_registration_path do
+                          .glyphicon.glyphicon-cog
+                            |    Edit
+                      li.divider
+                      li
+                        = link_to destroy_user_session_path, :method => :delete do
+                          .glyphicon.glyphicon-log-out
+                            |    Logout
                 -else
                   li.active
                     = link_to new_user_registration_path do
@@ -44,4 +62,7 @@ html
                       .glyphicon.glyphicon-log-in
                         |    Login
           .col-md-4
-    = yield
+    .col-md-4
+    .col-md-4
+      = yield
+    .col-md-4

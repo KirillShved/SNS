@@ -1,0 +1,14 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/.generators
+.idea/.rakeTasks
+.idea/SNS_v1.iml
+.idea/dataSources/
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+log/development.log
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep

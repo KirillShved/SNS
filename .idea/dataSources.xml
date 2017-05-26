@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="Rails SNS_v1: test" uuid="4f5e4c03-c5c6-4413-ab6f-d4b145efba82">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/SNS_test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails SNS_v1: development" uuid="c549ce21-48b2-43f6-8035-2052cd54d3da">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/SNS_development</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="Rails SNS_v1: production" uuid="e145cc92-154f-432d-8c4c-bdf7a13bfa50">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>$PROJECT_DIR$/config/database.yml</remarks>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1/SNS_production</jdbc-url>
+    </data-source>
+  </component>
+</project>
