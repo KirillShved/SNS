@@ -1,8 +1,7 @@
-
 h1
   = "Hello, #{current_user.first_name} #{current_user.last_name}"
   br
-    = image_tag(current_user.avatar, size: "128x128", style: "border-radius: 128px;")
+    = image_tag(current_user.avatar.thumb.url, style: "border-radius: 128px;")
 #myCarousel.carousel.slide data-ride="carousel"
   /! Indicators
   ol.carousel-indicators
