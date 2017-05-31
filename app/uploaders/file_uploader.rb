@@ -1,4 +1,4 @@
-class AvatarUploader < CarrierWave::Uploader::Base
+class FileUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
@@ -6,8 +6,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   process resize_to_fit: [800, 800]
 
-  version :thumb do
-    process resize_to_fill: [128, 128]
+  version :photo_show do
+    process resize_to_fill: [400, 400]
   end
   # Choose what kind of storage to use for this uploader:
   storage :file

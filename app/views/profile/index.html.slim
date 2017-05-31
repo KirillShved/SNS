@@ -2,33 +2,23 @@ h1
   = "Hello, #{current_user.first_name} #{current_user.last_name}"
   br
     = image_tag(current_user.avatar.thumb.url, style: "border-radius: 128px;")
-#myCarousel.carousel.slide data-ride="carousel"
-  /! Indicators
-  ol.carousel-indicators
-    li.active data-slide-to="0" data-target="#myCarousel"
-    li data-slide-to="1" data-target="#myCarousel"
-    li data-slide-to="2" data-target="#myCarousel"
-  /! Wrapper for slides
-  .carousel-inner
-    .item.active
-      = image_tag("logo")
-    .item
-      = image_tag("logo2")
-    .item
-      = image_tag("logo3")
-    .item
-      = image_tag("logo4")
-    .item
-      = image_tag("ruby")
-  /! Left and right controls
-  a.left.carousel-control data-slide="prev" href="#myCarousel"
-    span.glyphicon.glyphicon-chevron-left
-    span.sr-only Previous
-  a.right.carousel-control data-slide="next" href="#myCarousel"
-    span.glyphicon.glyphicon-chevron-right
-    span.sr-only Next
 
-.container
-  .row
-    .col-md-6
-      |hi3
+  .container-fluid
+    .row
+      .col-sm-12
+        = link_to 'New Album', new_album_path
+        br
+        - @albums.each do |album|
+          .col-sm-4
+            tr
+              td = image_tag(album.image_url)
+              td = album.title
+              td = truncate(strip_tags(album.description), length: 80)
+            br
+            tr
+              td = link_to album
+                .glyphicon.glyphicon-fullscreen
+              td = link_to edit_album_path(album)
+                .glyphicon.glyphicon-edit
+              td = link_to  album, method: :delete, data: { confirm: 'Are you sure?' }
+                .glyphicon.glyphicon-remove
