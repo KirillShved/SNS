@@ -10,6 +10,9 @@ gem 'rmagick'
 gem 'pry'
 
 gem 'carrierwave', '~> 1.0'
+gem 'carrierwave-i18n'
+
+gem 'carrierwave-mimetype-fu', git: "https://github.com/KirillShved/carrierwave-mimetype-fu.git"
 
 gem 'bootstrap-sass'
 
@@ -20,6 +23,9 @@ gem 'devise'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 gem 'slim'
+
+gem 'mini_magick'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use postgresql as the database for Active Record

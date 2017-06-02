@@ -7,8 +7,8 @@
 .idea/misc.xml
 .idea/modules.xml
 .idea/workspace.xml
-log/development.log
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+public/uploads/photo/

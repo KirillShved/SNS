@@ -7,6 +7,17 @@ p
   = @album.description
 p
   strong Image:
-  = @photo.image.photo_show.url
+
+.album.text-muted
+  .container-fluid
+    .row
+      - @album.photos.each do |photo|
+        .col-md-4
+          .card
+            = image_tag photo.image.photo_show.url
+          br
+          p
+            = truncate(strip_tags(photo.description), length: 80)
+= link_to 'Add photo', new_album_photo_path(@album)
 = link_to 'Edit', edit_album_path(@album)
 = link_to 'Back', profile_index_path
