@@ -1,6 +1,6 @@
 GIT
-  remote: https://github.com/KirillShved/carrierwave-mimetype-fu.git
-  revision: 2a0dbb008455b9f41073e21cfc2869651a29f464
+  remote: https://github.com/deviantech/carrierwave-mimetype-fu.git
+  revision: 0ffe07cb6a6aff1e61d15811330a5e509cfd6fb0
   specs:
     carrierwave-mimetype-fu (0.1.0)
       carrierwave
@@ -239,6 +239,7 @@ DEPENDENCIES
   pry
   puma (~> 3.7)
   rails (~> 5.1.1)
+  responders
   rmagick
   sass-rails (~> 5.0)
   selenium-webdriver

@@ -12,11 +12,12 @@ html
     .nav.navbar
       .container-fluid
         .row
-          .col-md-4
-            = image_tag("logo4", size: "100x50")
-          .col-md-4
+          .col-md-3
+          .col-md-6
             .navbar-header
               ul.nav.navbar-nav
+                li
+                  = image_tag("logo3", size: "100x50")
                 li.active
                   = link_to root_path do
                     .glyphicon.glyphicon-home
@@ -61,7 +62,7 @@ html
                     = link_to new_user_session_path do
                       .glyphicon.glyphicon-log-in
                         |    Login
-          .col-md-4
+          .col-md-3
     .col-md-3
     .col-md-6
       = yield

@@ -8,7 +8,7 @@ class FileUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [800, 800]
 
   version :photo_show do
-    process resize_to_fill: [256, 258]
+    process resize_to_fill: [256, 256]
   end
   # Choose what kind of storage to use for this uploader:
   storage :file

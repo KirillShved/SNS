@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  respond_to :html
 
   def index
     @photo = Photo.all
@@ -10,15 +11,7 @@ class PhotosController < ApplicationController
     @album = Album.find(params[:album_id])
     @album.photos << @photo
 
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to [ @album, @photo ], notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
-      else
-        format.html { render :new }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
-    end
+    respond_with @photo, location: [@album, @photo]
   end
 
   def show
