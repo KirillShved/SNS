@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   respond_to :html
 
   def index
-    @photo = Photo.all
+    @photos = Photo.all
   end
 
   def create
@@ -16,6 +16,18 @@ class PhotosController < ApplicationController
 
   def show
 
+  end
+
+  def update
+    @photo.update(photo_params)
+
+    respond_with @photo
+  end
+
+  def destroy
+    @photo.destroy
+
+    respond_with @photo.album
   end
 
   def new

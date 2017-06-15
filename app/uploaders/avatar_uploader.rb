@@ -9,6 +9,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
   version :thumb do
     process resize_to_fill: [128, 128]
   end
+
+  version :mini_avatar do
+    process resize_to_fill: [28, 28]
+  end
+
+  version :mini_avatar_for_photo do
+    process resize_to_fill: [44, 44]
+  end
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog

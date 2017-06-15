@@ -10,6 +10,7 @@ gem 'rmagick'
 gem 'pry'
 
 gem 'carrierwave', '~> 1.0'
+
 gem 'carrierwave-i18n'
 
 gem 'carrierwave-mimetype-fu', git: "https://github.com/deviantech/carrierwave-mimetype-fu.git"

@@ -2,67 +2,64 @@ doctype html
 html
   head
     title
-      | SNS
-    = favicon_link_tag("ruby.png")
+      |BubbleGram
+    = favicon_link_tag("logo5.png")
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => 'reload'
     = javascript_include_tag "application", "data-turbolinks-track" => 'reload'
     = csrf_meta_tags
+    meta content="width=device-width, initial-scale=1" name="viewport"
     link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet"
   body class="= controller.controller_name"
     .nav.navbar
       .container-fluid
         .row
-          .col-md-3
-          .col-md-6
-            .navbar-header
-              ul.nav.navbar-nav
-                li
-                  = image_tag("logo3", size: "100x50")
+          .col-lg-3.col-md-3.col-sm-0.col-xs-0
+          .col-lg-6.col-md-6.col-sm-12.col-xs-12
+            ul.nav.navbar-nav
+              li.active
+                = link_to root_path, id: 'logo_link' do
+                  = image_tag("logo5.png", size: "100x50")
+            form.navbar-form.navbar-nav
+              .input-group
+                input.form-control placeholder="Search" type="text"
+                .input-group-btn
+                  button.btn.btn-default type="submit"
+                    i.glyphicon.glyphicon-search
+            ul.nav.navbar-nav-right
+              - if user_signed_in?
+                li.dropdown.navbar-right
+                  a.dropdown-toggle data-toggle="dropdown"
+                    = image_tag current_user.avatar.mini_avatar.url, class: 'img-circle'
+                    = " #{current_user.first_name} #{current_user.last_name}"
+                  ul.dropdown-menu
+                    li.dropdown-header
+                      |Sing as:
+                      strong
+                        = current_user.email
+                    li.divider
+                    li
+                      = link_to profile_index_path do
+                        .glyphicon.glyphicon-user
+                          |    Profile
+                    li
+                      = link_to edit_user_registration_path do
+                        .glyphicon.glyphicon-cog
+                          |    Edit
+                    li.divider
+                    li
+                      = link_to destroy_user_session_path, :method => :delete do
+                        .glyphicon.glyphicon-log-out
+                          |    Logout
+              -else
                 li.active
-                  = link_to root_path do
-                    .glyphicon.glyphicon-home
-                      |    Home
-                form.navbar-form.navbar-left
-                  .input-group
-                    input.form-control placeholder="Search" type="text" /
-                    .input-group-btn
-                      button.btn.btn-default type="submit"
-                        i.glyphicon.glyphicon-search
-                - if user_signed_in?
-
-                  li.dropdown
-                    a.dropdown-toggle data-toggle="dropdown"
-                      .glyphicon.glyphicon-list
-                        =" #{current_user.first_name} #{current_user.last_name}"
-                    ul.dropdown-menu
-                      li.dropdown-header
-                        |Sing as:
-                        strong
-                          = current_user.email
-                      li.divider
-                      li
-                        = link_to profile_index_path do
-                          .glyphicon.glyphicon-user
-                            |    Profile
-                      li
-                        = link_to edit_user_registration_path do
-                          .glyphicon.glyphicon-cog
-                            |    Edit
-                      li.divider
-                      li
-                        = link_to destroy_user_session_path, :method => :delete do
-                          .glyphicon.glyphicon-log-out
-                            |    Logout
-                -else
-                  li.active
-                    = link_to new_user_registration_path do
-                      .glyphicon.glyphicon-check
-                        |    Register
-                  li.active
-                    = link_to new_user_session_path do
-                      .glyphicon.glyphicon-log-in
-                        |    Login
-          .col-md-3
+                  = link_to new_user_registration_path do
+                    .glyphicon.glyphicon-check
+                      |    Register
+                li.active
+                  = link_to new_user_session_path do
+                    .glyphicon.glyphicon-log-in
+                      |    Login
+          .col-lg-3.col-md-3.col-sm-0.col-xs-0
     .col-md-3
     .col-md-6
       = yield
