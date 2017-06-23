@@ -1,7 +1,39 @@
 // Place all the styles related to the albums controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.modal_photo {
+.my {
   height: 800px;
   width: 800px;
+}
+
+@media (min-width: 1200px) {
+  .modal-dialog {
+    width: 1150px !important;
+  }
+
+  .modal-content {
+    height: 100% !important;
+  }
+
+  .ex {
+    padding-left: -15px;
+  }
+
+  .row {
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .modal-dialog {
+    width: 980px !important;
+  }
+
+  .ex {
+    padding-left: 15px;
+  }
+
+  .row {
+    margin-bottom: 5px;
+  }
 }

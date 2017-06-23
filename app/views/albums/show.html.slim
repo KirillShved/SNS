@@ -21,26 +21,26 @@ p
           = link_to [@album, photo], method: :delete, data: { confirm: 'Are you sure?' }
             .glyphicon.glyphicon-remove.navbar-right
           br
-          = image_tag photo.image.photo_show.url, class: 'img-responsive, img-circle',
+          = image_tag photo.image.photo_show.url, class: 'img-responsive',
                                                   'data-target': "#myModal#{photo.id}",
                                                   'data-toggle': "modal"
           .modal.fade id=("myModal#{photo.id}") role="dialog"
             .modal-dialog
-              .modal-content.img-responsive
+              .modal-content
                 .row
-                  .col-md-8
-                    .modal_photo
-                      = image_tag photo.image.url
-                  .col-md-4
-                    .modal-header
-                      .row
-                        .col-lg-3.col-md-3.col-sm-1.col-xs-1
-                          = image_tag current_user.avatar.mini_avatar_for_photo.url, class: 'img-circle'
-                        .col-lg-9.col-md-9.col-sm-11.col-xs-11.navbar-right
-                          = " #{current_user.first_name} #{current_user.last_name}"
-                          br
-                          = photo.created_at.strftime('%e %b %Y')
-                    .modal-body
-                      |All COMMENTS
-                    .modal-footer
-                      |ADD COMMENT
+                  .col-lg-8.col-md-8.col-sm-12.col-xs-12
+                    = image_tag photo.image.url, class: 'img-responsive'
+                  .col-lg-4.col-md-4.col-sm-12.col-xs-12
+                    .ex
+                      .modal-header
+                        .row
+                          .col-lg-3.col-md-3.col-sm-1.col-xs-1
+                            = image_tag current_user.avatar.mini_avatar_for_photo.url, class: 'img-circle'
+                          .col-lg-9.col-md-9.col-sm-11.col-xs-11.navbar-right
+                            = " #{current_user.first_name} #{current_user.last_name}"
+                            br
+                            = photo.created_at.strftime('%e %b %Y')
+                      .modal-body
+                        |All COMMENTS
+                      .modal-footer
+                        |ADD COMMENT

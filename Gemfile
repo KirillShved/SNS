@@ -7,6 +7,10 @@ end
 
 gem 'rmagick'
 
+gem 'select2-rails'
+
+gem 'annotate'
+
 gem 'pry'
 
 gem 'carrierwave', '~> 1.0'
