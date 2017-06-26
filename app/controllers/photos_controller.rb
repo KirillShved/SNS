@@ -42,6 +42,8 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    params.require(:photo).permit(:title, :image, :description)
+    permitted_params = params.require(:photo).permit(:image, :description, tags: [])
+    permitted_params[:tags] = TagService.new(permitted_params[:tags]).tags
+    permitted_params
   end
 end

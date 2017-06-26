@@ -41,6 +41,10 @@ p
                             br
                             = photo.created_at.strftime('%e %b %Y')
                       .modal-body
-                        |All COMMENTS
+                        - if photo.tags.any?
+                          .tags-block
+                            - photo.tags.each do |tag|
+                              = link_to('#') do
+                                span.tag = tag.text
                       .modal-footer
                         |ADD COMMENT

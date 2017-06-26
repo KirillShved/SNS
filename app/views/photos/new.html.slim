@@ -3,13 +3,7 @@
   .form-inputs
     = f.input :image, as: :file
     = f.input :description
-    = f.input :tags, as: :select, input_html: { multiple: true }, collection: []
-
-    /.row
-    /  .col-sm-4
-    /    = select_tag(:tags, nil, class: 'tags-select w-100', multiple: true)
-    /  .col-sm-4
-    /    - @all_tags.each do |tag|
-    /      div = tag.text
+    = f.input :tags, as: :select, input_html: { class: 'tags-select', multiple: true},
+              collection: [], include_blank: false, include_hidden: false
   .form-actions
     = f.button :submit
