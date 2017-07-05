@@ -23,6 +23,8 @@ class Album < ApplicationRecord
   validates :title, :description, presence: true
   has_many :photos
 
-  has_many :taggings, as: :taggable
+  belongs_to :user
+
+  has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 end

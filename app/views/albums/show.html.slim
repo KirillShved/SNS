@@ -5,6 +5,13 @@ p
 p
   strong Description:
   = @album.description
+p
+  strong Tags:
+  - if @album.tags.any?
+    .tags-block
+      - @album.tags.each do |tag|
+        = link_to('#') do
+          span.tag = tag.text
 
 = link_to new_album_photo_path(@album)
   .glyphicon.glyphicon-plus
@@ -18,7 +25,7 @@ p
     .row
       - @album.photos.each do |photo|
         .col-lg-4.col-md-4.col-sm-4.col-xs-12
-          = link_to [@album, photo], method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to photo, method: :delete, data: { confirm: 'Are you sure?' }
             .glyphicon.glyphicon-remove.navbar-right
           br
           = image_tag photo.image.photo_show.url, class: 'img-responsive',

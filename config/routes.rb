@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-  resources :albums do
-    resources :photos
-  end
   get 'profile/index'
 
   get 'main_feed/index'
@@ -10,6 +6,12 @@ Rails.application.routes.draw do
   get 'albums/index'
 
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :users, shallow: true do
+    resources :albums do
+      resources :photos
+    end
+  end
+
   root 'main_feed#index'
 end

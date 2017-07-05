@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:show, :edit, :update, :destroy]
+  before_action :set_album, only: [:update, :destroy]
+  before_action :set_user, only: [:new, :create]
   respond_to :html
 
   def index
@@ -7,19 +8,16 @@ class AlbumsController < ApplicationController
   end
 
   def show
-
+    @album = Album.includes(photos: :tags).find(params[:id])
   end
 
   def new
     @album = Album.new
   end
 
-  def edit
-  end
-
   def create
-    @album = Album.create(album_params)
-    current_user.albums << @album
+    @album = @user.albums.create(album_params)
+    @album.tags = TagService.new(params[:album][:tags]).tags
 
     respond_with @album
   end
@@ -31,7 +29,9 @@ class AlbumsController < ApplicationController
   end
 
   def destroy
-    respond_with @album.destroy
+    @album.destroy
+
+    redirect_to profile_index_path
   end
 
   private
@@ -40,7 +40,11 @@ class AlbumsController < ApplicationController
     @album = Album.find(params[:id])
   end
 
+  def set_user
+    @user = User.find(params[:user_id])
+  end
+
   def album_params
-    params.require(:album).permit(:title, :description, :image_url)
+    params.require(:album).permit(:title, :description)
   end
 end

@@ -1,21 +1,22 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:edit, :update, :destroy]
   respond_to :html
 
   def index
     @photos = Photo.all
   end
 
-  def create
-    @photo = Photo.create(photo_params)
+  def new
+    @photo = Photo.new
     @album = Album.find(params[:album_id])
-    @album.photos << @photo
-
-    respond_with @photo, location: [@album, @photo]
   end
 
-  def show
+  def create
+    @album = Album.find(params[:album_id])
+    @photo = @album.photos.create(photo_params)
+    @photo.tags = TagService.new(params[:photo][:tags]).tags
 
+    redirect_to @album
   end
 
   def update
@@ -30,11 +31,6 @@ class PhotosController < ApplicationController
     respond_with @photo.album
   end
 
-  def new
-    @photo = Photo.new
-    @album = Album.find(params[:album_id])
-  end
-
   private
 
   def set_photo
@@ -42,8 +38,6 @@ class PhotosController < ApplicationController
   end
 
   def photo_params
-    permitted_params = params.require(:photo).permit(:image, :description, tags: [])
-    permitted_params[:tags] = TagService.new(permitted_params[:tags]).tags
-    permitted_params
+    params.require(:photo).permit(:image, :description)
   end
 end
