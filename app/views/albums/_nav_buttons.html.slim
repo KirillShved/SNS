@@ -1,0 +1,16 @@
+.row
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3
+    = link_to profile_index_path, title: 'Back page'
+      .btn.btn-default
+        |Back
+        .glyphicon.glyphicon-arrow-left
+  .col-lg-6.col-md-6.col-sm-6.col-xs-6
+    .text-center
+      = link_to edit_album_path(@album), title: 'Edit album'
+        .btn.btn-default.btn-lg
+          |Edit album
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3
+    .text-right
+      = link_to new_album_photo_path(@album), title: 'Add photo'
+        .btn.btn-default
+          |Add photo

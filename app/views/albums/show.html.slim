@@ -1,57 +1,10 @@
-p#notice= notice
-p
-  strong Title:
+.text-center
   = @album.title
-p
-  strong Description:
+  br
   = @album.description
+  br
+  = render 'tags'
 p
-  strong Tags:
-  - if @album.tags.any?
-    .tags-block
-      - @album.tags.each do |tag|
-        = link_to('#') do
-          span.tag = tag.text
-
-= link_to new_album_photo_path(@album)
-  .glyphicon.glyphicon-plus
-= link_to edit_album_path(@album)
-  .glyphicon.glyphicon-edit
-= link_to profile_index_path, title: 'Back page'
-  .glyphicon.glyphicon-arrow-left
-
-.album.text-muted
-  .container-fluid
-    .row
-      - @album.photos.each do |photo|
-        .col-lg-4.col-md-4.col-sm-4.col-xs-12
-          = link_to photo, method: :delete, data: { confirm: 'Are you sure?' }
-            .glyphicon.glyphicon-remove.navbar-right
-          br
-          = image_tag photo.image.photo_show.url, class: 'img-responsive',
-                                                  'data-target': "#myModal#{photo.id}",
-                                                  'data-toggle': "modal"
-          .modal.fade id=("myModal#{photo.id}") role="dialog"
-            .modal-dialog
-              .modal-content
-                .row
-                  .col-lg-8.col-md-8.col-sm-12.col-xs-12
-                    = image_tag photo.image.url, class: 'img-responsive'
-                  .col-lg-4.col-md-4.col-sm-12.col-xs-12
-                    .ex
-                      .modal-header
-                        .row
-                          .col-lg-3.col-md-3.col-sm-1.col-xs-1
-                            = image_tag current_user.avatar.mini_avatar_for_photo.url, class: 'img-circle'
-                          .col-lg-9.col-md-9.col-sm-11.col-xs-11.navbar-right
-                            = " #{current_user.first_name} #{current_user.last_name}"
-                            br
-                            = photo.created_at.strftime('%e %b %Y')
-                      .modal-body
-                        - if photo.tags.any?
-                          .tags-block
-                            - photo.tags.each do |tag|
-                              = link_to('#') do
-                                span.tag = tag.text
-                      .modal-footer
-                        |ADD COMMENT
+  = render 'nav_buttons'
+p
+  = render 'gallery'

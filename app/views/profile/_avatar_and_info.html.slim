@@ -1,0 +1,17 @@
+.container-fluid
+  .row
+    .col-lg-3.col-md-3.col-sm-3.col-xs-3
+      .ava_profile
+        = image_tag current_user.avatar.thumb.url, class: 'img-circle'
+    .col-lg-9.col-md-9.col-sm-9.col-xs-9
+      h1
+        = "#{current_user.first_name} #{current_user.last_name}"
+      .row
+        .col-lg-3.col-md-3.col-sm-3.col-xs-3
+          = "Photos: #{@photos}"
+        .col-lg-3.col-md-3.col-sm-3.col-xs-3
+          = "Albums: #{@albums.count}"
+        .col-lg-3.col-md-3.col-sm-3.col-xs-3
+          = "Subscribers: #{}0"
+        .col-lg-3.col-md-3.col-sm-3.col-xs-3
+          = "Subscription: #{}0"

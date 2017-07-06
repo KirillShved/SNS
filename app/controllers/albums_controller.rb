@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:update, :destroy]
+  before_action :set_album, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:new, :create]
   respond_to :html
 
@@ -15,16 +15,19 @@ class AlbumsController < ApplicationController
     @album = Album.new
   end
 
+  def edit
+
+  end
+
   def create
     @album = @user.albums.create(album_params)
     @album.tags = TagService.new(params[:album][:tags]).tags
-
     respond_with @album
   end
 
   def update
+    @album.tags = TagService.new(params[:album][:tags]).tags
     @album.update(album_params)
-
     respond_with @album
   end
 

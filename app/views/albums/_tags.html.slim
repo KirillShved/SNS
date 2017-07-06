@@ -1,0 +1,9 @@
+.row
+  .col-lg-3.col-md-2.col-sm-1.col-xs-0
+  .col-lg-6.col-md-8.col-sm-10.col-xs-12
+    - if @album.tags.any?
+      - @album.tags.each do |tag|
+        = link_to tag.text do
+          .btn.btn-default.btn-xs
+            = tag.text
+  .col-lg-3.col-md-2.col-sm-1.col-xs-0
