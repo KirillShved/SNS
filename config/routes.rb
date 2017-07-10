@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'profile/index'
+  get '/profile/:id', to: 'profile#index', as: 'profile'
 
   get 'main_feed/index'
 
@@ -7,7 +7,14 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :relationships
+
   resources :users, shallow: true do
+
+    member do
+      get :following, :followers
+    end
+
     resources :albums do
       resources :photos
     end

@@ -34,7 +34,7 @@ class AlbumsController < ApplicationController
   def destroy
     @album.destroy
 
-    redirect_to profile_index_path
+    redirect_to profile_path(current_user)
   end
 
   private

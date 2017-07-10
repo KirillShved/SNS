@@ -2,16 +2,23 @@
   .row
     .col-lg-3.col-md-3.col-sm-3.col-xs-3
       .ava_profile
-        = image_tag current_user.avatar.thumb.url, class: 'img-circle'
+        = image_tag @user.avatar.thumb.url, class: 'img-circle'  if current_user.avatar?
     .col-lg-9.col-md-9.col-sm-9.col-xs-9
-      h1
-        = "#{current_user.first_name} #{current_user.last_name}"
       .row
-        .col-lg-3.col-md-3.col-sm-3.col-xs-3
-          = "Photos: #{@photos}"
-        .col-lg-3.col-md-3.col-sm-3.col-xs-3
-          = "Albums: #{@albums.count}"
-        .col-lg-3.col-md-3.col-sm-3.col-xs-3
-          = "Subscribers: #{}0"
-        .col-lg-3.col-md-3.col-sm-3.col-xs-3
-          = "Subscription: #{}0"
+        .col-lg-4.col-md-6.col-sm-6.col-xs-6
+          h1
+            = "#{@user.first_name} #{@user.last_name}"
+        .col-lg-6.col-md-6.col-sm-6.col-xs-6
+          .text-left
+            = render 'follow_btn', user:  @user
+      br
+
+      .row
+        .text-center
+
+          .col-lg-4.col-md-4.col-sm-4.col-xs-4
+            = "Albums: #{@albums.count}"
+          .col-lg-4.col-md-4.col-sm-4.col-xs-4
+            = "Subscribers: #{@user.followers.count}"
+          .col-lg-4.col-md-4.col-sm-4.col-xs-4
+            = "Subscriptions: #{@user.following.count}"

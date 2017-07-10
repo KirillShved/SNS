@@ -1,13 +1,13 @@
 = render 'avatar_and_info'
 .text-center
-  = link_to new_user_album_path(current_user) do
+  = link_to new_user_album_path(@user) do
     .btn.btn-default.btn-lg
       | New album
 .container-fluid
   .row
     - @albums.each do |album|
-      .col-lg-4.col-md-4.col-sm-4.col-xs-12
+      .col-lg-4.col-md-4.col-sm-4.col-xs-6
         p
         = album.title
-        = link_to album
+        = link_to album, class: 'img-responsive'
           div style='background-color: grey; border-radius: 6px; height: 256px; width: 256px'

@@ -1,5 +1,7 @@
 class MainFeedController < ApplicationController
+
   def index
-    @photos = Photo.where('albums.user_id' => current_user.id).includes(:album)
+    @photos = Photo.where(albums: { user: current_user.following }).includes(:album)
+                                                                   .order(created_at: :desc)
   end
 end

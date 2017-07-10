@@ -5,16 +5,11 @@ h2 Sign up
   .form-inputs
     = f.input :first_name, required: true, autofocus: true, input_html: { class: 'bla' }
     = f.input :last_name, required: true, autofocus: true
-    = f.input :email, required: true, autofocus: true,
-              input_html: { id:          "password",
-                            type:        "password",
-                            class:       "form-control",
-                            name:        "password",
-                            placeholder: "Password" }
+    = f.input :email, required: true, autofocus: true
     = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
     = f.input :password_confirmation, required: true
     = f.input :address, autofocus: true
     = f.input :avatar, as: :file
   .form-actions
-    = f.button :submit, "Sign up"
+    = f.button :submit, "Sign up", class: 'btn-lg'
 = render "devise/shared/links"

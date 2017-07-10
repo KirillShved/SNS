@@ -1,6 +1,6 @@
 .row
   .col-lg-3.col-md-3.col-sm-3.col-xs-3
-    = link_to profile_index_path, title: 'Back page'
+    = link_to profile_path(@album.user), title: 'Back page'
       .btn.btn-default
         |Back
         .glyphicon.glyphicon-arrow-left

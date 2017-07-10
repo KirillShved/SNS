@@ -20,9 +20,9 @@ class PhotosController < ApplicationController
   end
 
   def update
-    @photo.update(photo_params)
     @photo.tags = TagService.new(params[:photo][:tags]).tags
-    respond_with @photo
+    @photo.update_attributes(photo_params)
+    respond_with @photo.album
   end
 
   def destroy
