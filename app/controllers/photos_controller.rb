@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy]
   respond_to :html
 
   def index
@@ -16,7 +16,15 @@ class PhotosController < ApplicationController
     @photo = @album.photos.create(photo_params)
     @photo.tags = TagService.new(params[:photo][:tags]).tags
 
-    redirect_to @album
+    respond_with @photo.album
+  end
+
+  def show
+
+  end
+
+  def edit
+
   end
 
   def update

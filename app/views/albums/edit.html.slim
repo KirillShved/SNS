@@ -1,3 +1,35 @@
-.text-center
-  h2 Edit album
-= render 'form_edit', album: @album
+.row
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3
+  .col-lg-6.col-md-6.col-sm-6.col-xs-6
+    .row
+      .col-lg-5.col-md-5.col-sm-5.col-xs-5
+        .text-left
+          h2 Edit album:
+      .col-lg-7.col-md-7.col-sm-7.col-xs-7
+        .text-center
+          h2
+            = @album.title
+    = simple_form_for @album do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :title, placeholder: 'New title'
+        = f.input :description, placeholder: 'New description'
+        = f.input :tags, as: :select, input_html: { class: 'tags-select', multiple: true,
+                data: { tags: @album.tags, width: '100%' } }, collection: [],
+                include_blank: false, include_hidden: false
+      .col-lg-3.col-md-3.col-sm-3.col-xs-3 style='padding: 0px;'
+        .text-left
+          = link_to @album do
+            .btn.btn-default
+              | Back
+              .glyphicon.glyphicon-arrow-left
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6 style='padding: 0px;'
+        .text-center
+          = f.button :submit, class: 'btn-lg'
+      .col-lg-3.col-md-3.col-sm-3.col-xs-3 style='padding: 0px;'
+        .text-right
+          = link_to @album, method: :delete, data: { confirm: 'Are you sure?' } do
+            .btn.btn-default
+              | Delete
+              .glyphicon.glyphicon-trash
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3

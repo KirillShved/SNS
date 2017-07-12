@@ -5,9 +5,4 @@
       | New album
 .container-fluid
   .row
-    - @albums.each do |album|
-      .col-lg-4.col-md-4.col-sm-4.col-xs-6
-        p
-        = album.title
-        = link_to album, class: 'img-responsive'
-          div style='background-color: grey; border-radius: 6px; height: 256px; width: 256px'
+    =  render collection: @albums, partial: 'profile/album_preview', as: :album

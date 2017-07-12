@@ -1,0 +1,11 @@
+.col-lg-4.col-md-4.col-sm-4.col-xs-6
+  p
+  = album.title
+  = link_to album, class: 'img-responsive', style: 'width: 256px;'
+    - if album.photos.any?
+      .my_style_photo_preview
+        - album.photos.sample(4).each do |photo|
+          .col-lg-6.col-md-6.col-sm-6.col-xs-6 style='height: 128px; width: 128px; padding: 0px;'
+            = image_tag photo.image.photo_preview.url, style: 'border-radius: 0px;'
+    - else
+      .my_style_photo_preview_v2

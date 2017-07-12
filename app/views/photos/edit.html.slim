@@ -1,8 +1,28 @@
-= simple_form_for [@album, @photo] do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :description
-    = f.input :tags, as: :select, collection: @photo.tags.collect { |tag| [tag.text, tag.id] },
-         input_html: { class: 'tags-select', multiple: true}, include_blank: false, include_hidden: false
-  .form-actions
-    = f.button :submit
+
+.row
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3
+  .col-lg-6.col-md-6.col-sm-6.col-xs-6
+    .col-lg-5.col-md-5.col-sm-5.col-xs-5 style='padding: 0px;'
+      .text-left
+        h2 Edit Photo:
+    .col-lg-7.col-md-7.col-sm-7.col-xs-7 style='padding: 0px;'
+      .text-right
+        = image_tag @photo.image.photo_show.url, class: 'img-responsive'
+    = simple_form_for @photo do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :description
+        = f.input :tags, as: :select, collection: @photo.tags.collect { |tag| [tag.text, tag.id] },
+             input_html: { class: 'tags-select', multiple: true}, include_blank: false, include_hidden: false
+      .form-actions
+        .col-lg-3.col-md-3.col-sm-3.col-xs-3 style='padding: 0px;'
+          .text-left
+            = link_to @photo.album do
+              .btn.btn-default
+                | Back
+                .glyphicon.glyphicon-arrow-left
+        .col-lg-6.col-md-6.col-sm-6.col-xs-6 style='padding: 0px;'
+          .text-center
+            = f.button :submit, class: 'btn-lg'
+        .col-lg-3.col-md-3.col-sm-3.col-xs-3 style='padding: 0px;'
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3

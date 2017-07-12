@@ -1,19 +1,22 @@
-- tags ||= []
-
-= simple_form_for([@user, @album]) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :title
-    = f.input :description
-    = f.input :tags, as: :select, input_html: { class: 'tags-select', multiple: true,
-              data: { tags: tags, width: '100%' }}, collection: [],
-              include_blank: false, include_hidden: false
-  .row
-    .col-lg-4.col-md-4.col-sm-4.col-xs-4
-      = link_to profile_path(@user) do
-        .btn.btn-default
-          | Back
-          .glyphicon.glyphicon-arrow-left
-    .col-lg-4.col-md-4.col-sm-4.col-xs-4
-      .text-center
-        = f.button :submit, class: 'btn-lg'
+.row
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3
+  .col-lg-6.col-md-6.col-sm-6.col-xs-6
+    - tags ||= []
+    = simple_form_for([@user, @album]) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :title
+        = f.input :description
+        = f.input :tags, as: :select, input_html: { class: 'tags-select', multiple: true,
+                  data: { tags: tags, width: '100%' }}, collection: [],
+                  include_blank: false, include_hidden: false
+      .row
+        .col-lg-4.col-md-4.col-sm-4.col-xs-4
+          = link_to profile_path(@user) do
+            .btn.btn-default
+              | Back
+              .glyphicon.glyphicon-arrow-left
+        .col-lg-4.col-md-4.col-sm-4.col-xs-4
+          .text-center
+            = f.button :submit, class: 'btn-lg'
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3
