@@ -5,34 +5,24 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rmagick'
-
-gem 'select2-rails'
-
-gem 'annotate'
-
-gem 'pry'
-
-gem 'carrierwave', '~> 1.0'
-
-gem 'carrierwave-i18n'
-
-gem 'carrierwave-mimetype-fu', git: "https://github.com/deviantech/carrierwave-mimetype-fu.git"
-
-gem 'bootstrap-sass'
-
-gem 'simple_form'
-
-gem 'devise'
-
-gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-
-gem 'slim'
-
+gem 'rmagick', '2.16.0'
 gem 'mini_magick'
-
+gem 'select2-rails'
+gem 'annotate'
+gem 'pry'
+gem 'carrierwave', '~> 1.0'
+gem 'carrierwave-i18n'
+gem 'carrierwave-mimetype-fu', git: "https://github.com/deviantech/carrierwave-mimetype-fu.git"
+gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'devise'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'slim'
 gem 'responders'
-
+gem 'capistrano', '~> 3.7', '>= 3.7.1'
+gem 'capistrano-rails', '~> 1.2'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rvm'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.1'
 # Use postgresql as the database for Active Record
