@@ -7,3 +7,5 @@
 !/tmp/.keep
 /public/uploads
 
+config/database.yml
+config/secrets.yml
