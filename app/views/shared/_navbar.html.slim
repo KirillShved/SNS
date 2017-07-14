@@ -24,7 +24,7 @@
                   a.dropdown-toggle data-toggle="dropdown"
                     .glyphicon.glyphicon-chevron-down
                       = image_tag current_user.avatar.mini_avatar.url, class: 'img-circle' if current_user.avatar?
-                  ul.dropdown-menu
+                  ul.dropdown-menu.pull-right
                     li.dropdown-header
                       |Sing as:
                       strong
@@ -51,9 +51,8 @@
               ul.nav.navbar-nav-right
                 li.dropdown.navbar-right
                   a.dropdown-toggle data-toggle="dropdown"
-                    .glyphicon.glyphicon-info-sign
-                      |    SING (IN | UP)
-                  ul.dropdown-menu
+                    .glyphicon.glyphicon-plus-sign style='font-size: 50px;'
+                  ul.dropdown-menu.pull-right
                     li
                       = link_to new_user_registration_path do
                         .glyphicon.glyphicon-check

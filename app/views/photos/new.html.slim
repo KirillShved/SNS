@@ -1,8 +1,8 @@
 .text-center
   h2 New Photo
 .row
-  .col-lg-3.col-md-3.col-sm-3.col-xs-3
-  .col-lg-6.col-md-6.col-sm-6.col-xs-6
+  .col-lg-3.col-md-3.col-sm-1.col-xs-0
+  .col-lg-6.col-md-6.col-sm-10.col-xs-12
     = simple_form_for [@album, @photo] do |f|
       = f.error_notification
       .form-inputs
@@ -21,4 +21,4 @@
           .text-center
             = f.button :submit, class: 'btn-lg'
         .col-lg-3.col-md-3.col-sm-3.col-xs-3 style='padding: 0px;'
-  .col-lg-3.col-md-3.col-sm-3.col-xs-3
+  .col-lg-3.col-md-3.col-sm-1.col-xs-0
