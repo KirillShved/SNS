@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get '/profile/:id', to: 'profile#index', as: 'profile'
+  get '/profile/:id', to: 'profile#show', as: 'profile'
 
   get '/albums/:id', to: 'albums#show', as: 'albums'
 
-  get 'main_feed/index'
+  get 'main_feed/show'
 
   devise_for :users
 
@@ -20,5 +20,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'main_feed#index'
+  root 'main_feed#show'
 end

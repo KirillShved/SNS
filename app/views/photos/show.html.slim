@@ -16,19 +16,21 @@
             = " #{@photo.album.user.first_name} #{@photo.album.user.last_name}"
             br
             = @photo.created_at.strftime('%e %b %Y')
-      hr
-        .row
-          .col-lg-4.col-md-4.col-sm-4.col-xs-4
-            .text-right
-              = link_to edit_photo_path(@photo) do
-                .btn.btn-default
-                  | Edit
-          .col-lg-8.col-md-8.col-sm-8.col-xs-8
-            .text-left
-              = link_to @photo, method: :delete, data: { confirm: 'Are you sure?' } do
-                .btn.btn-default
-                  | Delete
-                  .glyphicon.glyphicon-trash
+      - if can? :update, @photo
+        hr
+          .row
+            .col-lg-4.col-md-4.col-sm-4.col-xs-4
+              .text-right
+                = link_to edit_photo_path(@photo) do
+                  .btn.btn-default
+                    | Edit
+            - if can? :destroy, @photo
+              .col-lg-8.col-md-8.col-sm-8.col-xs-8
+                .text-left
+                  = link_to @photo, method: :delete, data: { confirm: 'Are you sure?' } do
+                    .btn.btn-default
+                      | Delete
+                      .glyphicon.glyphicon-trash
       hr
       = @photo.album.description
       br

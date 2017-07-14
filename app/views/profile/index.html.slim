@@ -1,8 +1,0 @@
-= render 'avatar_and_info'
-.text-center
-  = link_to new_user_album_path(@user) do
-    .btn.btn-default.btn-lg
-      | New album
-.container-fluid
-  .row
-    =  render collection: @albums, partial: 'profile/album_preview', as: :album

@@ -1,6 +1,8 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
   respond_to :html
+  load_and_authorize_resource :user
+  load_and_authorize_resource :album, through: :user, shallow: true
+  load_and_authorize_resource through: :album, shallow: true
 
   def index
     @photos = Photo.all
@@ -8,14 +10,10 @@ class PhotosController < ApplicationController
 
   def new
     @photo = Photo.new
-    @album = Album.find(params[:album_id])
   end
 
   def create
-    @album = Album.find(params[:album_id])
-    @photo = @album.photos.create(photo_params)
-    @photo.tags = TagService.new(params[:photo][:tags]).tags
-
+    @photo.tags = TagService.new(params[:photo][:tags]).tags if @photo.save
     respond_with @photo.album
   end
 
@@ -39,10 +37,6 @@ class PhotosController < ApplicationController
   end
 
   private
-
-  def set_photo
-    @photo = Photo.find(params[:id])
-  end
 
   def photo_params
     params.require(:photo).permit(:image, :description)

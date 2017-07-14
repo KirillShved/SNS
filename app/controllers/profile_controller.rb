@@ -1,6 +1,13 @@
 class ProfileController < ApplicationController
-  def index
-    @user = User.find(params[:id])
+  load_and_authorize_resource :user, parent: false
+
+  def show
     @albums = @user.albums.includes(:photos)
+  end
+
+  private
+
+  def user_params
+    params.permit(:id)
   end
 end

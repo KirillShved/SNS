@@ -1,7 +1,7 @@
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:edit, :update, :destroy]
-  before_action :set_user, only: [:new, :create]
   respond_to :html
+  load_and_authorize_resource :user
+  load_and_authorize_resource through: :user, shallow: true
 
   def index
     @albums = Album.all
@@ -20,8 +20,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = @user.albums.create(album_params)
-    @album.tags = TagService.new(params[:album][:tags]).tags
+    @album.tags = TagService.new(params[:album][:tags]).tags if @album.save
     respond_with @album
   end
 
@@ -38,14 +37,6 @@ class AlbumsController < ApplicationController
   end
 
   private
-
-  def set_album
-    @album = Album.find(params[:id])
-  end
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end
 
   def album_params
     params.require(:album).permit(:title, :description)
