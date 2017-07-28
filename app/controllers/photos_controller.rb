@@ -18,7 +18,8 @@ class PhotosController < ApplicationController
   end
 
   def show
-
+    @comments = @photo.comments.includes(:user).order(created_at: :asc)
+    @comment = Comment.new(user: current_user)
   end
 
   def edit

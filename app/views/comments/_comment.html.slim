@@ -1,0 +1,22 @@
+- comment ||= @comment
+.comment(id = "#{comment.id}")
+  .row style='border: 1px solid #ccc; padding: 5px; margin: 5px 0px 5px 0px; border-radius: 4px;'
+    .col-lg-3.col-md-3.col-sm-2.col-xs-2 style='padding: 0px;'
+      = link_to profile_path(comment.user)
+        .text-center
+          = image_tag comment.user.avatar.mini_avatar_for_photo.url, class: 'img-circle'
+    .col-lg-9.col-md-9.col-sm-10.col-xs-10
+      .row
+        .col-lg-10.col-md-10.col-sm-10.col-xs-10 style='padding-right: 0px;'
+          = link_to profile_path(comment.user)
+            .comment-user_name
+              = "#{comment.user.first_name} #{comment.user.last_name}"
+          .break-word
+            = comment.text
+          small.text-muted = time_ago_in_words(comment.created_at.localtime) + ' ago'
+        .col-lg-2.col-md-2.col-sm-2.col-xs-2 style='padding: 0px;'
+          - if can?(:destroy, comment)
+            = link_to comment, method: :delete, remote: true
+              .text-right
+                .btn.btn-default.btn-xs
+                  .glyphicon.glyphicon-remove

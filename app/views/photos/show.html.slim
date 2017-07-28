@@ -5,7 +5,7 @@
       .glyphicon.glyphicon-arrow-left
 .container-fluid style='padding-top: 15px;'
   .row
-    .col-lg-8.col-md-8.col-sm-12.col-xs-12
+    .col-lg-8.col-md-8.col-sm-12.col-xs-12 style='padding: 0px 0px 15px 0px;'
       = image_tag @photo.image.url, class: 'img-responsive', style: 'border-radius: 6px;'
     .col-lg-4.col-md-4.col-sm-12.col-xs-12
       .row
@@ -34,11 +34,21 @@
       hr
       = @photo.album.description
       br
-      p
+      br
       - if @photo.tags.any?
         - @photo.tags.each do |tag|
           = link_to tag.text do
             .btn.btn-default.btn-xs
               = tag.text
-      hr
-        |ADD COMMENT
+      br
+      br
+      .comments-block
+        - if @comments.any?
+          = render @comments
+      - if can?(:create, @comment)
+        = simple_form_for [@photo, @comment] do |f|
+          .input-group style='padding-bottom: 10px;'
+            = f.text_field :text, class: "form-control", placeholder: "Type your comment...",
+                  required: true, maxlength: 140
+            .input-group-btn
+              = f.button :submit, 'Post', class: 'btn'

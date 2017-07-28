@@ -1,0 +1,12 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.break-word {
+  word-break: break-word;
+}
+
+.comments-block {
+  max-height: 450px;
+  overflow-y: auto;
+}
