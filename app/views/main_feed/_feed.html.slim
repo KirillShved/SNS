@@ -1,0 +1,22 @@
+.col-lg-12.col-md-12.col-sm-12.col-xs-12
+  .feed-photo
+    = link_to(photo, id: photo.id, 'data-toggle': 'modal', 'data-target': '#myModal')
+      = image_tag photo.image.url, class: 'img-responsive',
+                                  style: 'display: !block; width: 100%; border-radius: 6px;'
+    br
+    .flex-container
+      .item
+        .flex-container
+          .item
+            = link_to profile_path(photo.album.user)
+              = image_tag photo.album.user.avatar.mini_avatar_for_photo.url, class: 'img-circle', style: 'padding-right: 5px'
+          .item
+            = link_to profile_path(photo.album.user)
+              = photo.album.user.first_name
+              br
+              = photo.album.user.last_name
+      .item
+        |   Album:
+        = link_to album_path(photo.album)
+          = photo.album.title
+  = render 'shared/modal'

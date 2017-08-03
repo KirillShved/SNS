@@ -26,6 +26,7 @@
 #
 
 class User < ApplicationRecord
+  include PgSearch
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -45,6 +46,7 @@ class User < ApplicationRecord
   # helper methods
 
   # follow another user
+  pg_search_scope :search_by_full_name, :against => [:first_name, :last_name]
 
   def follow(other)
     active_relationships.create(followed_id: other.id)

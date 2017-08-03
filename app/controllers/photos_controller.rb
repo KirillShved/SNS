@@ -20,6 +20,7 @@ class PhotosController < ApplicationController
   def show
     @comments = @photo.comments.includes(:user).order(created_at: :asc)
     @comment = Comment.new(user: current_user)
+    render action: 'show', layout: false if request.xhr?
   end
 
   def edit

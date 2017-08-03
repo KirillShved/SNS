@@ -8,7 +8,7 @@ class AlbumsController < ApplicationController
   end
 
   def show
-    @album = Album.includes(photos: :tags).find(params[:id])
+    @album = Album.includes([:photos, :tags]).find(params[:id])
   end
 
   def new

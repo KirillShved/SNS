@@ -15,8 +15,5 @@
 //= require rails-ujs
 //= require turbolinks
 //= require select2-full
+//= require twitter/typeahead
 //= require_tree .
-
-$( "#dropdown" ).select2({
-    theme: "bootstrap"
-});

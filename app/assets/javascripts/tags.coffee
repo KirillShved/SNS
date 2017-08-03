@@ -13,14 +13,6 @@ $(document).on 'turbolinks:load', ->
     allowClear: true
     placeholder: 'Enter your tags...'
     tokenSeparators: [',', ' ', '_']
-    ajax:
-      url: '/tags/search'
-      delay: 250
-      processResults: (data, params) ->
-        results: data.map (el) ->
-          el['id'] = el.text
-          el
-      cache: true
     createTag: (params) ->
       term = $.trim(params.term)
       unless term.match(/^#[\da-zA-Zа-яА-ЯёЁ]{1,20}$/)

@@ -1,12 +1,9 @@
-.text-left
-  = link_to @photo.album do
-    .btn.btn-default
-      |Album photos
-      .glyphicon.glyphicon-arrow-left
-.container-fluid style='padding-top: 15px;'
+.container-fluid
   .row
-    .col-lg-8.col-md-8.col-sm-12.col-xs-12 style='padding: 0px 0px 15px 0px;'
-      = image_tag @photo.image.url, class: 'img-responsive', style: 'border-radius: 6px;'
+    .col-lg-8.col-md-8.col-sm-12.col-xs-12 style='padding: 0px;'
+      = link_to @photo
+        = image_tag @photo.image.url, class: 'img-responsive', style: 'border-radius: 6px;'
+      br
     .col-lg-4.col-md-4.col-sm-12.col-xs-12
       .row
         = link_to profile_path(@photo.album.user)
@@ -16,21 +13,25 @@
             = " #{@photo.album.user.first_name} #{@photo.album.user.last_name}"
             br
             = @photo.created_at.strftime('%e %b %Y')
-      - if can? :update, @photo
-        hr
-          .row
+      hr
+        .row
+          .col-lg-4.col-md-4.col-sm-4.col-xs-4
+            = link_to @photo.album do
+              .btn.btn-default
+                |Album
+          - if can? :update, @photo
             .col-lg-4.col-md-4.col-sm-4.col-xs-4
               .text-right
                 = link_to edit_photo_path(@photo) do
                   .btn.btn-default
                     | Edit
-            - if can? :destroy, @photo
-              .col-lg-8.col-md-8.col-sm-8.col-xs-8
-                .text-left
-                  = link_to @photo, method: :delete, data: { confirm: 'Are you sure?' } do
-                    .btn.btn-default
-                      | Delete
-                      .glyphicon.glyphicon-trash
+          - if can? :destroy, @photo
+            .col-lg-4.col-md-4.col-sm-4.col-xs-4
+              .text-left
+                = link_to @photo, method: :delete, data: { confirm: 'Are you sure?' } do
+                  .btn.btn-default
+                    | Delete
+                    .glyphicon.glyphicon-trash
       hr
       = @photo.album.description
       br

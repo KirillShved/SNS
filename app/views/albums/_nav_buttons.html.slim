@@ -1,18 +1,19 @@
-.row style='padding: 0px;'
-  .col-lg-3.col-md-3.col-sm-3.col-xs-3 style='padding-left: 0px;'
+.col-lg-3.col-md-3.col-sm-3.col-xs-3 style='padding: 0px;'
+  .text-left
     = link_to profile_path(@album.user), title: 'Back page'
       .btn.btn-default
         |Back
         .glyphicon.glyphicon-arrow-left
-  - if can? :update, @album
-    .col-lg-6.col-md-6.col-sm-6.col-xs-6 style='padding: 0px;'
-      .text-center
-        = link_to edit_album_path(@album), title: 'Edit album'
-          .btn.btn-default.btn-lg
-            |Edit album
-  - if can? :create, Photo.new(album: @album)
-    .col-lg-3.col-md-3.col-sm-3.col-xs-3 style='padding: 0px;'
-      .text-right
-        = link_to new_album_photo_path(@album), title: 'Add photo'
-          .btn.btn-default
-            |Add photo
+- if can? :update, @album
+  .col-lg-6.col-md-6.col-sm-6.col-xs-6
+    .text-center
+      = link_to edit_album_path(@album), title: 'Edit album'
+        .btn.btn-default.btn-lg
+          |Edit album
+- if can? :create, Photo.new(album: @album)
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3 style='padding: 0px;'
+    .text-right
+      = link_to new_album_photo_path(@album), title: 'Add photo'
+        .btn.btn-default
+          .glyphicon.glyphicon-plus
+            |Add
