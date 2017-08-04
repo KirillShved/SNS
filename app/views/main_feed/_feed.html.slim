@@ -15,8 +15,8 @@
               = photo.album.user.first_name
               br
               = photo.album.user.last_name
-      .item
-        |   Album:
+      .item style='padding-left: 5px;'
+        | Album:
         br
         = link_to album_path(photo.album)
           = photo.album.title

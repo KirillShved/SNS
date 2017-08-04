@@ -9,7 +9,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    if @tag = Tag.find_by(text: "##{params[:id]}")
+    if @tag = Tag.find(params[:id])
       @photos = @tag.photos.includes(album: :user)
       @albums = @tag.albums.includes(:photos, :user)
     end

@@ -43,10 +43,11 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  pg_search_scope :search_by_full_name, against: [:first_name, :last_name], using: { tsearch: { prefix: true } }
+
   # helper methods
 
   # follow another user
-  pg_search_scope :search_by_full_name, :against => [:first_name, :last_name]
 
   def follow(other)
     active_relationships.create(followed_id: other.id)

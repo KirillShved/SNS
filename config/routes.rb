@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'main_feed/show'
 
+  get 'tags/:id', to: 'tags#show', as: 'tags'
+
   get '/search', to: 'search#search', autocomplete: true
 
   devise_for :users

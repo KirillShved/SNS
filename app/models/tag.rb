@@ -9,12 +9,13 @@
 #
 
 class Tag < ApplicationRecord
-  validates :text, uniqueness: true, format: { with: /\A#[\da-zA-Zа-яА-ЯёЁ]{1,20}\z/, message: 'wrong tag format' }
   include PgSearch
+
+  validates :text, uniqueness: true, format: { with: /\A#[\da-zA-Zа-яА-ЯёЁ]{1,20}\z/, message: 'wrong tag format' }
+
+  pg_search_scope :search_by_text, against: :text, using: { tsearch: { prefix: true} }
 
   has_many :taggings
   has_many :albums, through: :taggings, source: :taggable, source_type: Album
   has_many :photos, through: :taggings, source: :taggable, source_type: Photo
-
-  pg_search_scope :search_by_text, against: :text
 end
