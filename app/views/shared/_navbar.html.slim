@@ -1,45 +1,43 @@
 .col-lg-3.col-md-2.col-sm-1.col-xs-0
 .col-lg-6.col-md-8.col-sm-10.col-xs-12
   .row
-    .col-lg-3.col-md-3.col-sm-3.col-xs-3
-      = link_to root_path
-        = image_tag 'logo9991.png', size: '90x50'
-    .col-lg-6.col-md-6.col-sm-6.col-xs-6
-      = simple_form_for :search, method: 'get', url: search_path, remote: true do |f|
-        = f.text_field :q, id: 'remote_search', autocomplete: :off, placeholder: 'Search', class: "form-control typeahead scrollable-dropdown-menu"
-    .col-lg-3.col-md-3.col-sm-3.col-xs-3
-      .text-left
+    .flex-container
+      .item.navbar-item-left
+        = link_to root_path
+          = image_tag 'logo9991.png', size: '90x50'
+      .item
+        = simple_form_for :search, method: 'get', url: search_path, remote: true do |f|
+          = f.text_field :q, id: 'remote_search', autocomplete: :off, placeholder: 'Search', class: "form-control typeahead scrollable-dropdown-menu"
+      .item.navbar-item-right
         - if user_signed_in?
-          ul.nav.navbar-nav-right
-            li.dropdown.navbar-right
-              a.dropdown-toggle data-toggle="dropdown"
-                .glyphicon.glyphicon-chevron-down
-                  - if current_user.avatar.mini_avatar.url
-                    = image_tag current_user.avatar.mini_avatar.url, class: 'img-circle' if current_user.avatar?
-                  - else
-                    = image_tag 'empty_avatar_28.png', class: 'img-circle'
-              ul.dropdown-menu.pull-right
-                li.dropdown-header
-                  |Sign as:
-                  strong
-                    = "#{current_user.first_name} #{current_user.last_name}"
-                    br
-                  |  mail:
-                  = current_user.email
-                li.divider
-                li
-                  = link_to profile_path(current_user) do
-                    .glyphicon.glyphicon-user
-                      |    Profile
-                li
-                  = link_to edit_user_registration_path do
-                    .glyphicon.glyphicon-cog
-                      |    Edit
-                li.divider
-                li
-                  = link_to destroy_user_session_path, :method => :delete do
-                    .glyphicon.glyphicon-log-out
-                      |    Logout
+          div data-toggle="dropdown"
+            .glyphicon.glyphicon-chevron-down
+              - if current_user.avatar.mini_avatar.url
+                = image_tag current_user.avatar.mini_avatar.url, class: 'img-circle' if current_user.avatar?
+              - else
+                = image_tag 'empty_avatar_28.png', class: 'img-circle'
+          ul.dropdown-menu.pull-right
+            li.dropdown-header
+              |Sign as:
+              strong
+                = "#{current_user.first_name} #{current_user.last_name}"
+                br
+              |@mail:
+              = current_user.email
+            li.divider
+            li
+              = link_to profile_path(current_user) do
+                .glyphicon.glyphicon-user
+                  |    Profile
+            li
+              = link_to edit_user_registration_path do
+                .glyphicon.glyphicon-cog
+                  |    Edit
+            li.divider
+            li
+              = link_to destroy_user_session_path, :method => :delete do
+                .glyphicon.glyphicon-log-out
+                  |    Logout
         - else
           ul.nav.navbar-nav-right
             li.dropdown.navbar-right

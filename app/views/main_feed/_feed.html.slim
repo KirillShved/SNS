@@ -17,6 +17,7 @@
               = photo.album.user.last_name
       .item
         |   Album:
+        br
         = link_to album_path(photo.album)
           = photo.album.title
   = render 'shared/modal'

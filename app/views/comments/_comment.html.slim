@@ -4,7 +4,10 @@
     .col-lg-3.col-md-3.col-sm-2.col-xs-2 style='padding: 0px;'
       = link_to profile_path(comment.user)
         .text-center
-          = image_tag comment.user.avatar.mini_avatar_for_photo.url, class: 'img-circle'
+          - if comment.user.avatar.mini_avatar_for_photo.url
+            = image_tag comment.user.avatar.mini_avatar_for_photo.url, class: 'img-circle'
+          - else
+            = image_tag 'empty_avatar_44.png', class: 'img-circle'
     .col-lg-9.col-md-9.col-sm-10.col-xs-10
       .row
         .col-lg-10.col-md-10.col-sm-10.col-xs-10 style='padding-right: 0px;'
