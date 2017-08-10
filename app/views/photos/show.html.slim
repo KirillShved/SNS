@@ -43,7 +43,7 @@
       br
       - if @photo.tags.any?
         - @photo.tags.each do |tag|
-          = link_to tag.text do
+          = link_to "/tags/#{tag.id}" do
             .btn.btn-default.btn-xs
               = tag.text
       br

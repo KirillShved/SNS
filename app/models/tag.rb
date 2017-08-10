@@ -16,6 +16,6 @@ class Tag < ApplicationRecord
   pg_search_scope :search_by_text, against: :text, using: { tsearch: { prefix: true} }
 
   has_many :taggings
-  has_many :albums, through: :taggings, source: :taggable, source_type: Album
-  has_many :photos, through: :taggings, source: :taggable, source_type: Photo
+  has_many :albums, through: :taggings, source: :taggable, source_type: 'Album'
+  has_many :photos, through: :taggings, source: :taggable, source_type: 'Photo'
 end

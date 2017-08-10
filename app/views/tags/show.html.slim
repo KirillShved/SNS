@@ -1,1 +1,18 @@
-h2.text-center = "#{@tag.text}"
+h1.text-center = "#{@tag.text}"
+
+- if @albums && @albums.any?
+  .container-fluid
+    .row
+      h2.text-center
+        = "Albums (#{@albums.count})"
+      = render collection: @albums, partial: 'profile/album_preview', as: :album
+  br
+
+- if @photos && @photos.any?
+  .container-fluid
+    .row
+      h2.text-center
+        = "Photos (#{@photos.count})"
+      = render collection: @photos, partial: 'photos/photo', as: :photo
+
+= render 'shared/modal'
