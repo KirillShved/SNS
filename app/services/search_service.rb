@@ -1,4 +1,7 @@
 class SearchService
+
+  attr_reader :query
+
   def initialize(query)
     @query = query
   end
@@ -7,13 +10,7 @@ class SearchService
     search_tags + search_users
   end
 
-  attr_reader :query
-
   private
-
-  def serialize(resource)
-    ActiveModelSerializers::SerializableResource.new(resource)
-  end
 
   def search_tags
     Tag.search_by_text(query).first(5)
