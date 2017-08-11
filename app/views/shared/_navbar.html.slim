@@ -9,7 +9,7 @@
         = render 'search/form'
       .item.navbar-item-right
         - if user_signed_in?
-          div data-toggle="dropdown"
+          button.btn.btn-default.dropdown-toggle.btn-my-style-for-navbar data-toggle="dropdown" type="button"
             .glyphicon.glyphicon-chevron-down
               - if current_user.avatar.mini_avatar.url
                 = image_tag current_user.avatar.mini_avatar.url, class: 'img-circle' if current_user.avatar?
@@ -40,7 +40,7 @@
         - else
           ul.nav.navbar-nav-right
             li.dropdown.navbar-right
-              a.dropdown-toggle data-toggle="dropdown"
+              button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
                 .glyphicon.glyphicon-th-list style='font-size: 26px;'
               ul.dropdown-menu.pull-right
                 li
